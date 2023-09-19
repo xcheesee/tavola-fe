@@ -54,19 +54,28 @@ export default function Home() {
     }, [])
 
   return (
+    <>
     <div className="min-h-screen relative">
-            <div className='absolute w-full h-full'>
+            <div className='absolute w-full h-full z-10'>
                 <div className='absolute bg-black w-full h-full opacity-50'></div>
-                <img src="/mainbg.png" alt="" className='w-full h-full object-fit z-10'/>
+                <img src="/mainbg.png" alt="" className='w-full h-full object-fit'/>
+            </div>
+            <div className='fixed w-full h-full'>
+                <img src="/bg4.png" className='absolute w-full h-full object-fixed' />
+            </div>
+            <div className='absolute w-full h-full  rotate-180 overflow-hidden'>
+                <div className='w-[2200px] h-full -translate-x-[60px]'>
+                    <img src="/ripped-paper1.png" alt="" className='w-full h-full'/>
+                </div>
             </div>
 
             <Header />
 
             <div className='w-full h-[calc(100vh-3.5rem)] grid grid-rows-[max-content_1fr_min-content] pt-16'>
                 <div className='relative grid grid-rows-[repeat(2, min-content)] items-center pl-16 pb-28 pt-32'>
-                    <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-10'>TAVOLA</div>
-                    <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-10'>REDONDA</div>
-                    <div className='absolute left-1/2 -translate-x-1/2 grid self-center content-center w-[300px]'>
+                    <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-20'>TAVOLA</div>
+                    <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-20'>REDONDA</div>
+                    <div className='absolute left-1/2 -translate-x-1/2 grid self-center content-center w-[300px] z-10'>
                         <img src="./laurel.svg" alt="" className=''/>
                     </div>
                 </div>
@@ -99,7 +108,8 @@ export default function Home() {
                 </div>
 
             </div>
-
     </div>
+        <div className='h-[1080px]'></div>
+    </>
   )
 }
