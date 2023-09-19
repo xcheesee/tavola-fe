@@ -20,7 +20,7 @@ export default function Home() {
     const router = useRouter()
 
     useEffect(() => {
-        redirect('/dashboard')
+        //redirect('/dashboard')
     },[])
 
     const heroVals: HeroItem[] = [
@@ -57,7 +57,7 @@ export default function Home() {
     <div className="min-h-screen relative">
             <div className='absolute w-full h-full'>
                 <div className='absolute bg-black w-full h-full opacity-50'></div>
-                <img src="/mainbg.png" alt="" className='w-full h-full object-fit'/>
+                <img src="/mainbg.png" alt="" className='w-full h-full object-fit z-10'/>
             </div>
 
             <Header />
