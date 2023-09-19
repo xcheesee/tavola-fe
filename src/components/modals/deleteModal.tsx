@@ -1,8 +1,12 @@
-import { deleteProduto } from "@/utils/api"
+'use client'
+
+import { deleteProduto } from "@/utils/api/produtos"
 import { useQueryClient } from "@tanstack/react-query"
 
 export default function DeleteModal({data, id}: {data: {id: string}, id: string}) {
+
   const queryClient = useQueryClient()
+
     return(
         <dialog id={id} className="modal">
           <div className="modal-box">
@@ -15,7 +19,7 @@ export default function DeleteModal({data, id}: {data: {id: string}, id: string}
                     const res = await deleteProduto({id: data.id})
                     const modal = document.getElementById(id) as HTMLDialogElement
                     if(res.ok) {
-                      queryClient.invalidateQueries(["produtos"])
+                      queryClient.invalidateQueries()
                       modal.close()
                     }
                 }}>Confirmar</button>

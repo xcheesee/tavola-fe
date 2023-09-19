@@ -1,4 +1,4 @@
-import { getAllProdutos } from "@/utils/api";
+import { getAllProdutos } from "@/utils/api/produtos";
 import Produtos from "./produtos";
 import getQueryClient from "@/app/getQueryClient";
 import { dehydrate, Hydrate} from "@tanstack/react-query"

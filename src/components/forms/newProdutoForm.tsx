@@ -1,15 +1,27 @@
 'use client'
 
-import { postProduto, putProduto } from "@/utils/api"
-import type { Categoria, Produto } from "@/utils/types"
+import { postProduto } from "@/utils/api/produtos"
+import type { Categoria } from "@/utils/types"
 import { Icon } from "@iconify-icon/react/dist/iconify.js"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
-export default function NewProdutoForm({ title="", categorias }: { title: string, categorias: Array<Categoria> }) {
+export default function NewProdutoForm({ title=""}: { title: string }) {
     const router = useRouter()
     const queryClient = useQueryClient()
+
+    const categorias = useQuery({
+        queryFn: async () => {
+            const res = await fetch("/api/categorias", {
+                method: "GET",
+                cache: "no-store"
+            })
+            const categorias = await res.json()
+            return categorias
+        },
+        queryKey: ["categorias"],
+    })
 
     const postMutation = useMutation({
         mutationFn: async (formData: FormData) => {
@@ -75,9 +87,10 @@ export default function NewProdutoForm({ title="", categorias }: { title: string
                     name='categoriaId'
                 >
                     <option value="categoria" disabled hidden>Categoria</option>
-                    {categorias.map((categoria: Categoria, i: number) => (
-                       <option value={categoria.id} key={`cat${i}`}>{categoria.nome}</option> 
-                    ))}
+                    { categorias?.data?.map((categoria: Categoria, i: number) => (
+                            <option value={categoria.id} key={`cat${i}`}>{categoria.nome}</option> 
+                        ))
+                    }
                 </select>
                 <button className="btn btn-outline btn-success" formAction="submit">Adicionar</button>
             </div>

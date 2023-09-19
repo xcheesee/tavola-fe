@@ -1,12 +1,21 @@
+import getQueryClient from "@/app/getQueryClient"
 import { NewProdutoForm } from "@/components/forms"
 import LoadingSkeleton from "@/components/loadingSkeleton"
-import { getAllCategorias } from "@/utils/api"
+import { getAllCategorias } from "@/utils/api/categorias"
+import { Hydrate, dehydrate } from "@tanstack/react-query"
 import { Suspense } from 'react'
 
 async function ProdutoForm({title}: {title: string}) {
-    const categorias = await getAllCategorias()
+    const queryClient = getQueryClient()
+    await queryClient.prefetchQuery(['categorias'], getAllCategorias)
+    const dehydratedState = dehydrate(queryClient)
 
-    return <NewProdutoForm title={title} categorias={categorias} />
+    return (
+        <Hydrate state={dehydratedState}>
+            <NewProdutoForm title={title}/>
+        </Hydrate>
+    )
+
 } 
 
 export default function Page() {

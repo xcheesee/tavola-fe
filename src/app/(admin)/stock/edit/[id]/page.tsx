@@ -1,14 +1,21 @@
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import { EditProdutoForm } from "@/components/forms";
-import { getAllCategorias, getProduto } from "@/utils/api";
+import { getProduto } from "@/utils/api/produtos";
 import { Suspense } from "react";
+import getQueryClient from "@/app/getQueryClient";
+import { getAllCategorias } from "@/utils/api/categorias";
+import { Hydrate, dehydrate } from "@tanstack/react-query";
 
 async function EditForm({produtoId, title}: { produtoId: string, title: string}) {
     const produto = await getProduto({id: produtoId})
-    const categorias = await getAllCategorias()
+    const queryClient = getQueryClient()
+    queryClient.prefetchQuery(['categorias'], getAllCategorias)
+    const dehydratedState = dehydrate(queryClient)
 
     return(
-        <EditProdutoForm title={title} produto={produto} categorias={categorias} action="edit" />
+        <Hydrate state={dehydratedState} >
+            <EditProdutoForm title={title} produto={produto} />
+        </Hydrate>
     )
 }
 

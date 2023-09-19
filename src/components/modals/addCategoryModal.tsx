@@ -1,6 +1,7 @@
-import { postCategoria } from "@/utils/api"
+import { useQueryClient } from "@tanstack/react-query"
 
 export default function AddCategoryModal({modalId}: {modalId: string}) {
+    const queryClient = useQueryClient()
     return(
         <dialog id={modalId} className="modal">
             <div className="w-[500px] h-[300px] bg-white rounded-xl p-4 ">
@@ -11,7 +12,11 @@ export default function AddCategoryModal({modalId}: {modalId: string}) {
                         e.preventDefault()
 
                         const formData = new FormData(e.currentTarget)
-                        const res = await postCategoria({formData})
+                        const res = await fetch("http://localhost:3000/api/categorias",{
+                            method: "POST",
+                            body:formData
+                        })
+                        queryClient.invalidateQueries(['categorias'])
                         const modal = document.getElementById(modalId) as HTMLDialogElement
                         if (res.ok) {
                             modal.close()

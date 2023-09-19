@@ -3,7 +3,7 @@
 import { AddCategoryModal } from '@/components/modals'
 import FiltroDropdown from '@/components/filtroDropdown'
 import ProdutoTable from '@/components/produtoTable'
-import { getAllProdutos } from '@/utils/api'
+import { getAllProdutos } from '@/utils/api/produtos'
 import { Icon } from '@iconify-icon/react'
 import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
@@ -12,7 +12,14 @@ import { useState } from 'react'
 export default function Produtos() {
     const {data} = useQuery({
         queryKey: ['produtos'],
-        queryFn: getAllProdutos,
+        queryFn: async () => {
+            const res = await fetch('/api/produtos', {
+                method: "GET",
+                cache: "no-store"
+            })
+            const json = await res.json()
+            return json
+        },
     })
 
     const categoryModalId = "category-modal"

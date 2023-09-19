@@ -1,15 +1,28 @@
 'use client'
 
-import { putProduto } from "@/utils/api"
+import { putProduto } from "@/utils/api/produtos"
 import type { Categoria, Produto } from "@/utils/types"
 import { Icon } from "@iconify-icon/react/dist/iconify.js"
+import { useQuery } from "@tanstack/react-query"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
-export default function EditProdutoForm({ title="", produto, categorias, action }: { title: string, produto: Produto, categorias: Array<Categoria>, action: string }) {
+export default function EditProdutoForm({ title="", produto }: { title: string, produto: Produto }) {
     const router = useRouter()
 
-    async function sendProduto({event }: {event: React.FormEvent<HTMLFormElement>, action: string}) {
+    const categorias = useQuery({
+        queryFn: async () => {
+            const res = await fetch("/api/categorias",{
+                method: "GET",
+                cache: "no-store"
+            })
+            const json = await res.json()
+            return json
+        },
+        queryKey: ["categorias"]
+    })
+
+    async function sendProduto({event }: {event: React.FormEvent<HTMLFormElement>}) {
         const formData = new FormData(event.currentTarget)
         let res;
         res = await putProduto({formData: formData, id: produto.id})
@@ -23,7 +36,7 @@ export default function EditProdutoForm({ title="", produto, categorias, action 
         <form onSubmit={(e) => {
             e.preventDefault()
 
-            sendProduto({event: e, action: action })
+            sendProduto({event: e })
         }}>
             <div className="text-3xl text-slate-700 pb-16 p-4 flex items-center">
                 <Link href={'/stock'}>
@@ -67,7 +80,7 @@ export default function EditProdutoForm({ title="", produto, categorias, action 
                     name='categoria'
                 >
                     <option value="categoria" disabled hidden>Categoria</option>
-                    {categorias.map((categoria: Categoria, i: number) => (
+                    {categorias?.data?.map((categoria: Categoria, i: number) => (
                        <option value={categoria.id} key={`cat${i}`}>{categoria.nome}</option> 
                     ))}
                 </select>
