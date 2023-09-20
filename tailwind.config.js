@@ -38,7 +38,8 @@ module.exports = {
         },
         fontFamily: {
           sans: ['var(--font-roboto)'],
-          serif: ['var(--font-italiana)']
+          serif: ['var(--font-italiana)'],
+          cursive: ['var(--font-allura)']
         },
         keyframes: {
             dropdown: {

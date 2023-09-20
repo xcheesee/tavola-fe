@@ -1,6 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Roboto, Italiana } from 'next/font/google'
+import { Roboto, Italiana, Allura } from 'next/font/google'
 import Script from 'next/script'
 import Providers from './providers'
 
@@ -17,6 +17,12 @@ export const italiana = Italiana({
   variable: "--font-italiana"
 })
 
+export const allura = Allura({
+  weight: "400",
+  subsets: ['latin'],
+  variable: "--font-allura"
+})
+
 export const metadata: Metadata = {
   title: 'Tavola Redonda',
   description: 'TBD',
@@ -29,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${italiana.variable} font-sans`}>
+      <body className={`${roboto.variable} ${italiana.variable} ${allura.variable} font-sans`}>
           <Providers>{children}</Providers>
       </body>
       <Script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" />

@@ -56,17 +56,8 @@ export default function Home() {
   return (
     <>
     <div className="min-h-screen relative">
-            <div className='absolute w-full h-full z-10'>
-                <div className='absolute bg-black w-full h-full opacity-50'></div>
-                <img src="/mainbg.png" alt="" className='w-full h-full object-fit'/>
-            </div>
-            <div className='fixed w-full h-full'>
-                <img src="/bg4.png" className='absolute w-full h-full object-fixed' />
-            </div>
-            <div className='absolute w-full h-full  rotate-180 overflow-hidden'>
-                <div className='w-[2200px] h-full -translate-x-[60px]'>
-                    <img src="/ripped-paper1.png" alt="" className='w-full h-full'/>
-                </div>
+            <div className='absolute w-full h-[120vh] z-10'>
+                <img src="/mainbg3.png" alt="" className='w-full h-full object-fit '/>
             </div>
 
             <Header />
@@ -109,7 +100,45 @@ export default function Home() {
 
             </div>
     </div>
-        <div className='h-[1080px]'></div>
+
+    <div className='grid grid-cols-2 w-full z-30 pt-[300px] relative'>
+        <div className='[&>*]:text-end pr-32'>
+            <div className=''>
+                <div className='text-gold-600 text-5xl font-cursive -mb-8'>Excelencia</div>
+                <div className='text-gold-50 text-4xl left-4 relative'>Sobre Nos</div>
+            </div>
+
+            <div className='flex justify-end'>
+                <div className='text-gold-50 w-[60ch] pt-32 text-lg '>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Ut at magna bibendum, aliquet eros sit amet, ullamcorper erat. 
+                Donec elementum imperdiet purus, id efficitur tortor convallis ut. 
+                Cras id nisi et enim tempus dignissim. Duis nec dolor ac elit efficitur porta. 
+                Ut sit amet leo euismod, luctus urna sed, consectetur lacus. 
+                </div>
+            </div>
+        </div>
+
+        <div className='h-full w-full'>
+            <img src="./abtimg.png" alt="" className='object-cover'/>
+        </div>
+
+    </div>
+
+    <div className='h-full w-full relative'>
+
+        <div className='z-40 text-white relative top-60 grid justify-center'>
+            pog
+        </div>
+
+        <div className='absolute z-30 w-full h-full'>
+            <img src="./bg-ratings-2.png" alt="" className='w-full h-full absolute object-fill'/>
+        </div>
+    </div>
+
+    <div className='fixed w-full h-full'>
+        <img src="/bg4.png" className='absolute w-full h-full object-fixed' />
+    </div>
     </>
   )
 }
