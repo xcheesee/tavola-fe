@@ -9,6 +9,7 @@ import '@splidejs/react-splide/css'
 import { Eagle_Lake as Almendra } from 'next/font/google'
 import { useEffect, useState } from 'react'
 import { useRouter, redirect } from 'next/navigation'
+import Testemonial from '@/components/testemonial'
 
 export const almendra = Almendra({ 
     subsets: ['latin'],
@@ -16,42 +17,11 @@ export const almendra = Almendra({
 })
 
 export default function Home() {
-    const [test, setTest] = useState(0)
     const router = useRouter()
 
     useEffect(() => {
         //redirect('/dashboard')
     },[])
-
-    const heroVals: HeroItem[] = [
-        {
-            title: "Deleite-se com o Sabor",
-            description: "uma fusão encantadora de ervas e especiarias raras, marinadas nos melhores destilados, e servidas com um toque de mistério. Da primeira mordida até o último pedaco, você será transportado a um reino onde cada sentido é aguçado, cada sabor é uma aventura. Embarque em uma jornada mística com uma única mordida.",
-            src: "https://s1.1zoom.me/b5071/951/Fast_food_Hamburger_Buns_French_fries_Vegetables_566270_1920x1080.jpg",
-            c2a: "Pedir Agora"
-        },
-        {
-            title: "O Tesouro no Fim da Aventura",
-            description: "De banquetes substanciosos a delícias delicadas, nosso cardápio é um testemunho de nossa dedicação à qualidade e inovação. Com uma variedade diversificada de pratos meticulosamente elaborados para atender a todos os paladares, você encontrará uma sinfonia de sabores esperando para serem descobertos.",
-            src: "https://e1.pxfuel.com/desktop-wallpaper/617/911/desktop-wallpaper-beer-mug-food-foam-cutting-board-meat-products-churrasco-thumbnail.jpg",
-            c2a: "Ver Menu"
-        },
-        {
-            title: "Além da Comida",
-            description: "não servimos apenas comida; criamos experiências. Nossa filosofia está enraizada na crença de que uma refeição é mais do que sustento - é uma ponte que conecta culturas, uma tela para a criatividade e uma homenagem à tradição.",
-            src: "https://c4.wallpaperflare.com/wallpaper/413/702/427/fantasy-art-pointed-ears-tavern-candles-wallpaper-preview.jpg",
-            c2a: "Sobre Nos"
-        }
-    ]
-
-    useEffect(() => {
-        let count = 1
-        let last = heroVals.length
-        setInterval(() => {
-            setTest(count % last)
-            count++
-        }, 5000)
-    }, [])
 
   return (
     <>
@@ -125,16 +95,77 @@ export default function Home() {
 
     </div>
 
-    <div className='h-full w-full relative'>
-
-        <div className='z-40 text-white relative top-60 grid justify-center'>
-            pog
+    <div className='min-h-[80vh] w-full relative'>
+        <div className='absolute z-30 w-full h-full'>
+            <img src="./bg-ratings-2.png" alt="" className='w-full h-full object-fit'/>
         </div>
 
-        <div className='absolute z-30 w-full h-full'>
-            <img src="./bg-ratings-2.png" alt="" className='w-full h-full absolute object-fill'/>
+        <div className='grid h-full w-full content-end pb-16'>
+            <Testemonial />
         </div>
     </div>
+
+    <div className='z-30 bg-rangoon-950 py-8'>
+        <div className='grid grid-rows-[min-content_1fr_min-content] justify-center gap-8 '>
+            <div className=''>
+                <div className='font-cursive relative -mb-8 -left-16 text-center text-4xl text-gold-600'>Asgard</div>
+                <div className='text-center text-3xl text-gold-50 z-30 relative'>Localizacao</div>
+            </div>
+
+            <div className='grid justify-center h-full'>
+                <iframe
+                  width="1000"
+                  height="450"
+                  style={{border:0}}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAYW_f8OGyYraaUmQfM9sYPNC_U2MSHp0E
+                    &q=Cannabis+Museum+Amsterdam">
+                </iframe>
+            </div>
+
+            <div className='justify-self-center text-white text-center text-3xl font-serif tracking-widest'>
+                <div>Rua Fulano de Tal, Sem Número</div>
+                <div>Paraisópolis, São Paulo</div>
+            </div>
+        </div>
+    </div>
+
+    <footer className='h-[30vh] z-30 bg-black'>
+        <div className='grid grid-cols-3 px-32 py-16'>
+            <div className=''>
+                <div className='font-bold text-white pb-4'>Funcionamento</div>
+                <div className='text-rangoon-900'>
+                    <div>Segunda a Sabado: 09:00h as 21:00h</div>
+                    <div>Domingo: 11:00h as 23:00h</div>
+                    <div>Feriado: 12:00h as 23:00h</div>
+                </div>
+            </div>
+
+            <div className='justify-self-center'>
+                <div className='font-bold text-white pb-4'>Atendimento ao Cliente</div>
+                <div className='text-rangoon-900 [&>*]:'>
+                    <div className='hover:text-gold-600'>Sobre Nos</div>
+                    <div className='hover:text-gold-600'>Reservas</div>
+                    <div className='hover:text-gold-600'>Delivery</div>
+                    <div className='hover:text-gold-600'>Cardapio</div>
+                    <div className='hover:text-gold-600'>Informacoes Nutricionais</div>
+
+                </div>
+            </div>
+
+            <div className='justify-self-end'>
+                <div className='font-bold text-white pb-4 '>Contato Comercial</div>
+                <div className='text-rangoon-900'>
+                    <div>email: welive@welove.welie</div>
+                    <div>telefone: (11)99893-3922</div>
+                </div>
+            </div>
+
+            <div className='self-end absolute bottom-0 justify-self-center col-span-3 text-rangoon-900 py-4'>© ШАЙЛУШАЙ LLC, Lybia</div>
+        </div>
+    </footer>
 
     <div className='fixed w-full h-full'>
         <img src="/bg4.png" className='absolute w-full h-full object-fixed' />

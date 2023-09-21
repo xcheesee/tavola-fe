@@ -1,4 +1,5 @@
-import { getAllCategorias, getAllProdutos } from "@/utils/api"
+import { getAllCategorias } from "@/utils/api/categorias"
+import { getAllProdutos } from "@/utils/api/produtos"
 import Catalog from "./catalog"
 import { Suspense } from "react"
 import LoadingSkeleton from "@/components/loadingSkeleton"
