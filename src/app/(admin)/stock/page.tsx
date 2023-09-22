@@ -3,9 +3,9 @@ import Produtos from "./produtos";
 import getQueryClient from "@/app/getQueryClient";
 import { dehydrate, Hydrate} from "@tanstack/react-query"
 
-export default async function Stock() {
+export default async function Page() {
   const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(['produtos'], getAllProdutos)
+  await queryClient.prefetchQuery(['produtos'], () => getAllProdutos())
   const dehydratedState = dehydrate(queryClient)
 
     return(

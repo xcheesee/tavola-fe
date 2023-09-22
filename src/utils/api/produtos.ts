@@ -1,4 +1,6 @@
-export async function getAllProdutos() {
+export async function getAllProdutos(options?: {
+    categoria?: string
+}) {
     const url = "http://localhost:5034/produto"
 
     const res = await fetch(url, {cache: "no-store"})

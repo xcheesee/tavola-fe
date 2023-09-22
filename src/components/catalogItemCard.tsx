@@ -1,5 +1,6 @@
 import { Produto } from '@/utils/types'
 import { Almendra } from 'next/font/google'
+import NumberInput from './numberInput'
 
 export const almendra = Almendra({ 
     subsets: ['latin'],
@@ -9,19 +10,20 @@ export const almendra = Almendra({
 
 export default function CatalogItemCard({item}: {item: Produto}) {
     return(
-        <div className="w-[380px] h-[300px] bg-neutral-500 border-4 border-black relative overflow-hidden">
-            <div className='w-full h-full absolute'>
-                <img src="https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/12/hamburguer-unsplash.jpg?w=876&h=484&crop=1" alt="" className='w-full h-full object-fit'/>
+        <div className='grid grid-cols-[max-content_1fr] bg-rangoon-50 rounded-xl h-[200px] w-[700px] shadow-2xl relative'>
+            <div className='w-[200px] h-[170px] rounded-lg relative mx-4 self-center overflow-hidden'>
+                <img src="./abtimg.png" alt="" className='object-fill w-full h-full'/>
             </div>
-            <div className="absolute w-full h-full translate-y-3/4 hover:transform-none transition-all z-10">
-                <span className="absolute bg-black w-full h-full hover:opacity-90 transition-all bg"></span>
-                <div className="absolute grid w-full h-full grid-rows-[max-content_1fr] z-10 px-4">
-                    <div className='flex justify-between items-center py-4 [&>*]:text-neutral-300'>
-                        <h1 className={`${almendra.className} text-3xl`}>{item.nome}</h1>
-                        <div className='font-bold'>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(item.valor)}</div>
-                    </div>
-                    <p>{item.descricao}</p>
+            <div className='grid grid-rows-[min-content_1fr_min-content] my-4 ml-4'>
+                <div className='text-3xl font-light tracking-[0.5rem]'>{item.nome}</div>
+                <div className='text-rangoon-500 text-md ml-4'>{item.descricao}</div>
+                <div className='grid grid-cols-2 justify-between items-center mr-8'>
+                    <div className='font-light text-2xl'>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(item.valor)}</div>
+                    <button className='btn bg-gold-600 text-rangoon-50 hover:text-gold-600'>Add to Cart</button>
                 </div>
+            </div>
+            <div className='absolute right-2 top-2'>
+                <NumberInput />
             </div>
         </div>
     )

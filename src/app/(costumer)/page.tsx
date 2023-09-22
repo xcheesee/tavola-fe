@@ -2,8 +2,6 @@
 
 import DynamicCounter from '@/components/dynamicCounter'
 import Header from '@/components/header'
-import StyledHero from '@/components/styledHero'
-import { HeroItem } from '@/utils/types'
 import { Icon } from '@iconify-icon/react/dist/iconify.js'
 import '@splidejs/react-splide/css'
 import { Eagle_Lake as Almendra } from 'next/font/google'
