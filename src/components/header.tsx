@@ -3,7 +3,7 @@ import { Icon } from '@iconify-icon/react'
 
 export default function Header() {
     return(
-        <nav className="flex justify-around relative w-full  z-10 ">
+        <nav className="flex justify-around relative w-full  z-10 px-[260px]">
             <div className="flex flex-1 relative pt-4 px-8">
                 <div className="flex flex-1 justify-around items-center z-20">
                     <div className="text-gold-600 font-bold text-3xl font-light">Tavola Redonda</div>
