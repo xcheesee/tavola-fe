@@ -31,7 +31,7 @@ export default function Home() {
 
             <Header />
 
-            <div className='w-full h-[calc(100vh-3.5rem)] px-[260px] grid grid-rows-[max-content_1fr_min-content] pt-16'>
+            <div className='w-full h-[calc(100vh-3.5rem)] xl:px-[230px] grid grid-rows-[max-content_1fr_min-content] pt-16'>
                 <div className='relative grid grid-rows-[repeat(2, min-content)] items-center pl-16 pb-28 pt-32'>
                     <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-20'>TAVOLA</div>
                     <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-20'>REDONDA</div>
@@ -70,7 +70,7 @@ export default function Home() {
             </div>
     </div>
 
-    <div className='grid grid-cols-2 w-full z-30 pt-[300px] px-[260px] relative'>
+    <div className='grid grid-cols-2 w-full z-30 pt-[300px] xl:px-[230px] relative' id='about'>
         <div className='[&>*]:text-end pr-32 px'>
             <div className=''>
                 <div className='text-gold-600 text-5xl font-cursive -mb-8'>Excelencia</div>
@@ -104,7 +104,7 @@ export default function Home() {
         </div>
     </div>
 
-    <div className='z-30 bg-rangoon-950 py-8'>
+    <div className='z-30 bg-rangoon-950 py-8' id='loc'>
         <div className='grid grid-rows-[min-content_1fr_min-content] justify-center gap-8 '>
             <div className=''>
                 <div className='font-cursive relative -mb-8 -left-16 text-center text-4xl text-gold-600'>Asgard</div>

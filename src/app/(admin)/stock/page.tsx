@@ -9,8 +9,8 @@ export default async function Page() {
   const dehydratedState = dehydrate(queryClient)
 
     return(
-        <div className="grid grid-cols-2 gap-8 px-4 py-2">
-            <h2 className="font-bold col-span-2 text-3xl">Estoque</h2>
+        <div className="grid grid-cols-2 gap-8 px-4 pt-16">
+            <h2 className="font-bold col-span-2 text-5xl">Estoque</h2>
             <Hydrate state={dehydratedState}>
               <Produtos />
             </Hydrate>

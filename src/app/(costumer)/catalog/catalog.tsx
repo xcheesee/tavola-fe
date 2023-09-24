@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function Catalog({categorias}: {categorias: Array<Categoria>}) {
 
-    const [selectedCategoria, setSelectedCategoria] = useState<any>("Lanche")
+    const [selectedCategoria, setSelectedCategoria] = useState<any>("")
 
     const itens = useQuery({
         queryKey: ['produtos', selectedCategoria],
@@ -17,7 +17,7 @@ export default function Catalog({categorias}: {categorias: Array<Categoria>}) {
 
     return(
         <div className="">
-        <div className="w-full flex justify-center pt-24">
+        <div className="w-full flex justify-center 2xl:pt-24 pt-12">
             <div className="tabs flex">
                 {categorias?.map( (categoria: Categoria, i: number) => 
                     <div 
@@ -30,7 +30,7 @@ export default function Catalog({categorias}: {categorias: Array<Categoria>}) {
             </div>
         </div>
             <div className="grid items-center justify-center relative h-full">
-                <div className="xl:w-[1500px] py-16 w-full grid xl:grid-cols-2 grid-flow-row gap-y-16 gap-x-4 justify-items-center">
+                <div className="2xl:w-[1440px] py-16 w-full grid xl:grid-cols-2 grid-flow-row gap-y-16 gap-x-4 justify-items-center">
                     {itens?.data?.map( (item: Produto, i: number) => <CatalogItemCard key={`${item.nome}${i}`} item={item} />)}
                 </div>
             </div>
