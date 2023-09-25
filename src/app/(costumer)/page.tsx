@@ -70,15 +70,15 @@ export default function Home() {
             </div>
     </div>
 
-    <div className='grid grid-cols-2 w-full z-30 pt-[300px] xl:px-[230px] relative' id='about'>
-        <div className='[&>*]:text-end pr-32 px'>
+    <div className='grid xl:grid-cols-2 w-full z-30 xl:pt-[300px] pt-44 xl:px-[230px] relative' id='about'>
+        <div className='[&>*]:xl:text-end text-center xl:pr-32 '>
             <div className=''>
                 <div className='text-gold-600 text-5xl font-cursive -mb-8'>Excelencia</div>
                 <div className='text-gold-50 text-4xl left-4 relative'>Sobre Nos</div>
             </div>
 
-            <div className='flex justify-end'>
-                <div className='text-gold-50 w-[60ch] pt-32 text-lg '>
+            <div className='flex xl:justify-end justify-center max-xl:pb-16'>
+                <div className='text-gold-50 md:w-[60ch] pt-32 text-lg '>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Ut at magna bibendum, aliquet eros sit amet, ullamcorper erat. 
                 Donec elementum imperdiet purus, id efficitur tortor convallis ut. 
@@ -88,8 +88,8 @@ export default function Home() {
             </div>
         </div>
 
-        <div className='h-full w-full'>
-            <img src="./abtimg.png" alt="" className='object-cover'/>
+        <div className='h-full w-full max-xl:justify-self-center'>
+            <img src="./abtimg.png" alt="" className='w-full h-fullobject-cover'/>
         </div>
 
     </div>
@@ -111,12 +111,11 @@ export default function Home() {
                 <div className='text-center text-3xl text-gold-50 z-30 relative'>Localizacao</div>
             </div>
 
-            <div className='grid justify-center h-full'>
+            <div className='grid justify-center h-full w-full relative'>
                 <iframe
-                  width="1000"
-                  height="450"
                   style={{border:0}}
                   loading="lazy"
+                  className='xl:w-[1000px] h-[450px] md:w-[700px] md:h-[450px] sm:w-[350px]'
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
                   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAYW_f8OGyYraaUmQfM9sYPNC_U2MSHp0E

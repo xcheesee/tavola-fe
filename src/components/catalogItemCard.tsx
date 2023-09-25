@@ -12,7 +12,7 @@ export default function CatalogItemCard({item, checkout=false}: {item: Produto, 
     return(
         <div className='grid grid-cols-[max-content_1fr] bg-rangoon-50 rounded-xl min-h-[200px] w-[700px] shadow-2xl relative'>
             <div className='w-[200px] h-[170px] rounded-lg relative mx-4 self-center overflow-hidden'>
-                <img src="./abtimg.png" alt="" className='object-fill w-full h-full'/>
+                <img src="/abtimg.png" alt="" className='object-fill w-full h-full'/>
             </div>
             <div className='grid grid-rows-[min-content_1fr_min-content] my-4 ml-4'>
                 <div className='text-3xl font-light tracking-[0.5rem] text-rangoon-800'>{item.nome}</div>
