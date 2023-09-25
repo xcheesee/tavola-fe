@@ -74,11 +74,11 @@ export default function Home() {
         <div className='[&>*]:xl:text-end text-center xl:pr-32 '>
             <div className=''>
                 <div className='text-gold-600 text-5xl font-cursive -mb-8'>Excelencia</div>
-                <div className='text-gold-50 text-4xl xl:left-4 relative'>Sobre Nos</div>
+                <div className='text-gold-50 text-3xl xl:left-4 relative'>Sobre Nos</div>
             </div>
 
             <div className='flex xl:justify-end justify-center max-xl:pb-16'>
-                <div className='text-gold-50 md:w-[60ch] xl:pt-32 pt-12 text-lg '>
+                <div className='text-gold-50 md:w-[60ch] xl:pt-32 pt-12 '>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Ut at magna bibendum, aliquet eros sit amet, ullamcorper erat. 
                 Donec elementum imperdiet purus, id efficitur tortor convallis ut. 
@@ -123,7 +123,7 @@ export default function Home() {
                 </iframe>
             </div>
 
-            <div className='justify-self-center flex flex-col text-white text-center text-3xl font-serif tracking-widest'>
+            <div className='justify-self-center flex flex-col font-bold text-gold-700 text-white text-center text-3xl tracking-widest'>
                 <div>Rua Fulano de Tal, Sem Número</div>
                 <div>Paraisópolis, São Paulo</div>
             </div>
