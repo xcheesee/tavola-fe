@@ -32,7 +32,7 @@ export default function Home() {
             <Header />
 
             <div className='w-full h-[calc(100vh-3.5rem)] xl:px-[230px] grid grid-rows-[max-content_1fr_min-content] pt-16'>
-                <div className='relative grid grid-rows-[repeat(2, min-content)] items-center pl-16 pb-28 pt-32'>
+                <div className='relative grid grid-rows-[repeat(2, min-content)] items-center xl:pl-16 xl:pb-28 xl:pt-32'>
                     <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-20'>TAVOLA</div>
                     <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-20'>REDONDA</div>
                     <div className='absolute left-1/2 -translate-x-1/2 grid self-center content-center w-[300px] z-10'>
@@ -46,7 +46,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className='row-start-3 h-full z-10 grid grid-cols-3 justify-center content-start py-4'>
+                <div className='row-start-3 h-full z-10 grid xl:grid-cols-3 justify-center content-start py-4'>
                     <DynamicCounter 
                         endValue={4823} 
                         icon={<Icon icon={"material-symbols:stars-rounded"} width={50} className='text-gold-600'/>}
@@ -74,11 +74,11 @@ export default function Home() {
         <div className='[&>*]:xl:text-end text-center xl:pr-32 '>
             <div className=''>
                 <div className='text-gold-600 text-5xl font-cursive -mb-8'>Excelencia</div>
-                <div className='text-gold-50 text-4xl left-4 relative'>Sobre Nos</div>
+                <div className='text-gold-50 text-4xl xl:left-4 relative'>Sobre Nos</div>
             </div>
 
             <div className='flex xl:justify-end justify-center max-xl:pb-16'>
-                <div className='text-gold-50 md:w-[60ch] pt-32 text-lg '>
+                <div className='text-gold-50 md:w-[60ch] xl:pt-32 pt-12 text-lg '>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Ut at magna bibendum, aliquet eros sit amet, ullamcorper erat. 
                 Donec elementum imperdiet purus, id efficitur tortor convallis ut. 
@@ -89,7 +89,7 @@ export default function Home() {
         </div>
 
         <div className='h-full w-full max-xl:justify-self-center'>
-            <img src="./abtimg.png" alt="" className='w-full h-fullobject-cover'/>
+            <img src="./abtimg.png" alt="" className='w-full h-full object-fit'/>
         </div>
 
     </div>
@@ -123,7 +123,7 @@ export default function Home() {
                 </iframe>
             </div>
 
-            <div className='justify-self-center text-white text-center text-3xl font-serif tracking-widest'>
+            <div className='justify-self-center flex flex-col text-white text-center text-3xl font-serif tracking-widest'>
                 <div>Rua Fulano de Tal, Sem Número</div>
                 <div>Paraisópolis, São Paulo</div>
             </div>

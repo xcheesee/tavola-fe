@@ -4,7 +4,7 @@ import SubheaderLink from "./subheaderLink"
 
 export default function Header() {
     return(
-        <nav className="grid min-2xl:grid-cols-[1fr_min-content] grid-cols-2 2xl:px-[230px] z-10 w-full  relative pt-4 justify-between">
+        <nav className="max-md:hidden grid min-2xl:grid-cols-[1fr_min-content] grid-cols-2 2xl:px-[230px] z-10 w-full  relative pt-4 justify-between">
             <div className="flex gap-8 justify-between items-center z-20">
                 <Link href={'/'}>
                     <div className="text-gold-600 font-bold text-3xl font-light">Tavola Redonda</div>
