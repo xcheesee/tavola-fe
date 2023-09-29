@@ -17,3 +17,12 @@ export interface Produto {
     valor: number;
     categoria: Categoria;
 }
+
+export interface Pedido {
+    [key: number]: PedidoItem
+}
+
+export interface PedidoItem {
+    produto: Produto,
+    qtd: number
+}
