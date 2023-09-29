@@ -25,11 +25,10 @@ export default function CheckoutItemCard({item, qtd}: {item: Produto, qtd?: numb
                         onClick={() => {
                             setPedido(prev => {
                                 const newPedido:{[key:string]: PedidoItem} = {}
-                                Object.entries(prev).filter( keyVal => +keyVal[0] !== item.id)
-                                    .forEach( keyVal => {
-                                        newPedido[keyVal[0]]=  keyVal[1]
-                                    } )
-                               return newPedido 
+                                Object.entries(prev)
+                                    .filter( keyVal => +keyVal[0] !== item.id)
+                                    .forEach( keyVal => { newPedido[keyVal[0]]=  keyVal[1] } )
+                                return newPedido 
                             })
                         }}
                     >
