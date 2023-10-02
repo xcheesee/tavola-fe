@@ -31,8 +31,8 @@ export interface PedidoApiSendable extends PedidoApiData {
 
 export interface PedidoApiData {
     id?: number;
-    forma_Pagamento: string;
-    status_Pedido: string;
+    pagamento: string;
+    status: string;
     total: number;
 }
 

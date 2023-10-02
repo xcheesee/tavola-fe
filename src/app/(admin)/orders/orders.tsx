@@ -7,11 +7,20 @@ import FiltroDropdown from "@/components/filtroDropdown"
 import { useQuery } from "@tanstack/react-query"
 import { getAllPedidos } from "@/utils/api/pedidos"
 import PedidoTable from "@/components/pedidoTable"
+import { ShowPedidoModal } from "@/components/modals"
 
 export default function Orders() {
 
     const [activeTab, setActiveTab] = useState(0)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    const [pedidoId, setPedidoId] = useState<number | null>(null)
+    const pedidoModalId = 'pedido-modal'
+
+    function onClickView(id: number | null) {
+        setPedidoId(id)
+        const pedidoModal = document.getElementById(pedidoModalId) as HTMLDialogElement
+        pedidoModal.show()
+    }
 
     const pedidos = useQuery({
         queryFn: () => getAllPedidos(),
@@ -46,9 +55,21 @@ export default function Orders() {
                     <input type="text" placeholder="Em Estoque" className="input input-bordered w-full" /> 
                 </FiltroDropdown>
                 
-                <PedidoTable pedidos={pedidos?.data} />
+                <PedidoTable pedidos={pedidos?.data} onClickView={onClickView} />
             </TabContent>
-            <TabContent tabId={1} activeTab={activeTab}>Pedidos</TabContent>
+
+            <TabContent tabId={1} activeTab={activeTab}>
+                <FiltroDropdown isCollapsed={isDropdownOpen} onClick={() => setIsDropdownOpen(prev => !prev)}>
+                    <input type="text" placeholder="Nome" className="input input-bordered w-full" /> 
+                    <input type="text" placeholder="Categoria" className="input input-bordered w-full" /> 
+                    <input type="text" placeholder="Faixa de Preco" className="input input-bordered w-full" /> 
+                    <input type="text" placeholder="Em Estoque" className="input input-bordered w-full" /> 
+                </FiltroDropdown>
+
+                <PedidoTable pedidos={pedidos?.data} onClickView={onClickView} />
+            </TabContent>
+
+            <ShowPedidoModal modalId={pedidoModalId} pedidoId={pedidoId} />
         </div>
 
     )

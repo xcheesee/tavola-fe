@@ -11,9 +11,9 @@ export async function POST(request: NextRequest) {
             'Content-Type': 'application/json'
         }
     })
-    //if(!res.ok) {
-    //    return NextResponse.error()
-    //}
+    if(!res.ok) {
+        return NextResponse.error()
+    }
     //const json = await res.json()
     //return NextResponse.json(json)
     return new Response("pog", {

@@ -47,8 +47,8 @@ export default function Checkout() {
             <CheckoutCard 
                 onClick={async () => {
                     const pedidoData: PedidoApiSendable = {
-                        forma_Pagamento: 'Dinheiro',
-                        status_Pedido: "Recebido",
+                        pagamento: 'Dinheiro',
+                        status: "Recebido",
                         total: getPedidoTotal(pedido),
                         itens: pedidoObjToApiArray(pedido)
                     }
