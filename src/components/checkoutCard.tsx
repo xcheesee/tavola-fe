@@ -2,7 +2,7 @@ import { pedidoAtom } from "@/utils/atomStore"
 import { getPedidoTotal } from "@/utils/funcs"
 import { useAtomValue } from 'jotai'
 
-export default function CheckoutCard() {
+export default function CheckoutCard({ onClick }: {onClick: () => void}) {
     const pedido = useAtomValue(pedidoAtom)
     const subtotal = getPedidoTotal(pedido)
     const taxa = 0
@@ -31,7 +31,7 @@ export default function CheckoutCard() {
                 <div className="self-end">Total</div>
                 <div className="text-3xl text-gold-500">{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(subtotal + taxa + delivery)}</div>
             </div>
-            <button className="btn bg-gold-500 font-bold border-gold-500 text-xl hover:text-rangoon-100">CHECKOUT</button>
+            <button className="btn bg-gold-500 font-bold border-gold-500 text-xl hover:text-rangoon-100" onClick={onClick}>CHECKOUT</button>
         </div>
     )
 }

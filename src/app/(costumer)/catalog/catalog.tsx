@@ -1,4 +1,5 @@
 'use client'
+import AutohideToast from "@/components/autohideToast";
 import CatalogItemCard from "@/components/catalogItemCard";
 import { getAllCategorias } from "@/utils/api/categorias";
 import { getAllProdutos } from "@/utils/api/produtos";
@@ -34,6 +35,7 @@ export default function Catalog({categorias}: {categorias: Array<Categoria>}) {
                     {itens?.data?.map( (item: Produto, i: number) => <CatalogItemCard key={`${item.nome}${i}`} item={item} />)}
                 </div>
             </div>
+        <AutohideToast />
         </div>
     )
 }

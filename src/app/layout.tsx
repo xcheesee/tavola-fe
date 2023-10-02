@@ -36,7 +36,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${italiana.variable} ${allura.variable} font-sans`}>
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+          </Providers>
       </body>
       <Script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" />
     </html>

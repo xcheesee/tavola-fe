@@ -19,7 +19,21 @@ export interface Produto {
 }
 
 export interface Pedido {
-    [key: number]: PedidoItem
+    forma_pagamento: string;
+    status_pedido: string;
+    total: number;
+    itens: PedidoItem[]
+}
+
+export interface PedidoApiSendable extends PedidoApiData {
+    itens?: {ProdutoId: number, Quantidade: number}[]
+}
+
+export interface PedidoApiData {
+    id?: number;
+    forma_Pagamento: string;
+    status_Pedido: string;
+    total: number;
 }
 
 export interface PedidoItem {
