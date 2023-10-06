@@ -26,16 +26,16 @@ export default function Home() {
     <>
     <div className="min-h-screen relative">
             <div className='absolute w-full h-[120vh] z-10'>
-                <img src="/mainbg3.png" alt="" className='w-full h-full object-fit '/>
+                <img src="/mainbg3.png" alt="" className='w-full h-full lg:object-fit object-cover'/>
             </div>
 
             <Header />
 
             <div className='w-full h-[calc(100vh-3.5rem)] xl:px-[230px] grid grid-rows-[max-content_1fr_min-content] pt-16'>
-                <div className='relative grid grid-rows-[repeat(2, min-content)] items-center xl:pl-16 xl:pb-28 xl:pt-32'>
-                    <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-20'>TAVOLA</div>
-                    <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-20'>REDONDA</div>
-                    <div className='absolute left-1/2 -translate-x-1/2 grid self-center content-center w-[300px] z-10'>
+                <div className='relative grid grid-rows-[repeat(2, min-content)] items-center justify-content-center xl:pl-16 xl:pb-28 xl:pt-32'>
+                    <div className='lg:text-5xl text-3xl text-center tracking-[2rem] text-gold-50 z-20'>TAVOLA</div>
+                    <div className='lg:text-5xl text-3xl text-center tracking-[2rem] text-gold-50 z-20'>REDONDA</div>
+                    <div className='absolute left-1/2 -translate-x-1/2 grid self-center content-center max-w-[300px] z-10'>
                         <img src="/laurel.svg" alt="" className=''/>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ export default function Home() {
 
     <div className='min-h-[80vh] w-full relative'>
         <div className='absolute z-30 w-full h-full'>
-            <img src="/bg-ratings-2.png" alt="" className='w-full h-full object-fit'/>
+            <img src="/bg-ratings-2.png" alt="" className='w-full h-full lg:object-fit object-cover'/>
         </div>
 
         <div className='grid h-full w-full content-end pb-16'>
