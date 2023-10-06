@@ -1,5 +1,6 @@
 import { PedidoApiData, PedidoApiSendable } from "@/utils/types";
 import { Icon } from "@iconify-icon/react";
+import StatusBadge from "../statusBadge/statusBadge";
 
 export default function PedidoTable({ pedidos, onClickView }: { pedidos: PedidoApiData[], onClickView: (arg: number | null) => void }) {
     return (
@@ -20,7 +21,7 @@ export default function PedidoTable({ pedidos, onClickView }: { pedidos: PedidoA
                       <th>{pedido.id}</th>
                       <td>{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(pedido.total)}</td>
                       <td>{pedido.pagamento}</td>
-                      <td>{pedido.status}</td>
+                      <td><StatusBadge status={pedido.status} /></td>
 
                       <td className='flex gap-4'>
                         <div className='tooltip' data-tip="Visualizar">

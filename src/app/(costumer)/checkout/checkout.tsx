@@ -12,12 +12,15 @@ import { useMutation, useQuery } from "@tanstack/react-query"
 import { useAtom, useSetAtom } from 'jotai'
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { io } from "socket.io-client/debug"
 
 export default function Checkout() {
     //const itens = useQuery({
     //    queryKey: ['produtos'],
     //    queryFn: () => getAllProdutos()
     //})
+
+    const socket = io('ws://localhost:8000')
 
     const [toast, setToast] = useAtom(toastAtom)
 
@@ -40,7 +43,7 @@ export default function Checkout() {
 
 
     return (
-        <div className="grid grid-cols-[3fr_1fr] mt-16 xl:px-[230px] h-[300vh]">
+        <div className="grid lg:grid-cols-[3fr_1fr] mt-16 xl:px-[230px] ">
             <div className="justify-self-center flex flex-col gap-8">
                 {Object.values(pedido)?.map( (item: PedidoItem, i: number) => <CheckoutItemCard item={item.produto} key={`chkout${i}`} qtd={item.qtd}/>)}
             </div>
@@ -55,6 +58,7 @@ export default function Checkout() {
                     await postPedido.mutateAsync({ pedido: pedidoData })
                     setToast(prev => ({...prev, message: "Pedido enviado.", open: true}))
                     setPedido({})
+                    socket.emit('pedidoRealizado')
                     router.push('/catalog')
                 }}
             />

@@ -19,17 +19,10 @@ export default async function Page() {
     const dehydratedState = dehydrate(queryClient)
 
     return(
-        <div className="relative bg-rangoon-100 z-10 min-h-screen">
-            <div className="absolute h-[40vh] w-full ">
-                <img src="./bg-catalog.png" alt="" className="object-fit w-full h-full"/>
-            </div>
-            <Header />
-            <div className="font-serif text-5xl z-20 relative text-rangoon-100 tracking-[1.5rem] text-center pt-28">MENU</div>
             <Suspense fallback={<LoadingSkeleton/>}>
                 <Hydrate state={dehydratedState} >
                     <CatalogItems />
                 </Hydrate>
             </Suspense>
-        </div>
     )
 }

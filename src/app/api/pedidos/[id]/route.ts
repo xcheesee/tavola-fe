@@ -10,5 +10,5 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
         return NextResponse.error()
     }
     const data = await res.json()
-    return NextResponse.json(data.produto)
+    return NextResponse.json(data)
 }

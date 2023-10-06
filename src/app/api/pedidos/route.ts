@@ -20,3 +20,17 @@ export async function POST(request: NextRequest) {
         status: 200
     })
 }
+
+export async function GET(request: NextRequest) {
+    const url = "http://localhost:5034/pedido"
+    const res = await fetch(url, {
+        method: 'GET',
+        cache: 'no-store'
+    })
+    if(!res.ok) {
+        return NextResponse.error()
+    }
+    const json = await res.json()
+    return NextResponse.json(json)
+
+}

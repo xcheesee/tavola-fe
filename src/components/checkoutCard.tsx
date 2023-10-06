@@ -9,7 +9,7 @@ export default function CheckoutCard({ onClick }: {onClick: () => void}) {
     const delivery = 4.99
 
     return (
-        <div className="bg-rangoon-50 rounded-xl shadow-2xl w-full h-[400px] py-8 flex flex-col px-4 [&>*]:text-rangoon-800 sticky top-16">
+        <div className="bg-rangoon-50 rounded-xl shadow-2xl w-full h-[400px] py-8 flex flex-col px-4 [&>*]:text-rangoon-800 sticky lg:top-16 bottom-8 max-lg:my-8">
             <div className="self-center pb-4 text-3xl">SUMMARY</div>
 
             <div className="border-b-2 my-2 border-rangoon-800 flex justify-between">

@@ -2,19 +2,25 @@
 
 import Tab from "@/components/tab"
 import TabContent from "@/components/tabContent"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import FiltroDropdown from "@/components/filtroDropdown"
-import { useQuery } from "@tanstack/react-query"
+import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query"
 import { getAllPedidos } from "@/utils/api/pedidos"
 import PedidoTable from "@/components/pedidoTable"
 import { ShowPedidoModal } from "@/components/modals"
+import { io } from "socket.io-client"
 
 export default function Orders() {
+    const queryClient = useQueryClient()
 
     const [activeTab, setActiveTab] = useState(0)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [pedidoId, setPedidoId] = useState<number | null>(null)
+    const [signal, setSignal] = useState(false)
+
     const pedidoModalId = 'pedido-modal'
+
+    const socket = io("ws://localhost:8000")
 
     function onClickView(id: number | null) {
         setPedidoId(id)
@@ -25,6 +31,14 @@ export default function Orders() {
     const pedidos = useQuery({
         queryFn: () => getAllPedidos(),
         queryKey: ['pedidos'],
+    })
+
+    useEffect(() => {
+        queryClient.invalidateQueries(['pedidos'])
+    }, [signal])
+
+    socket.on('cozinhaPedido', () => {
+        setSignal(prev => !prev)
     })
 
     return (
