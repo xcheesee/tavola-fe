@@ -17,6 +17,13 @@ export default function Catalog({categorias}: {categorias: Array<Categoria>}) {
         queryFn: () => getAllProdutos({categoria: selectedCategoria})
     })
 
+    const filtered = itens?.data?.filter( item => {
+        if(selectedCategoria === "") {
+            return true
+        }
+        return item.categoria.nome === selectedCategoria
+    } )
+
     return(
         <div className="relative bg-rangoon-100 z-10 min-h-screen">
 
@@ -38,7 +45,15 @@ export default function Catalog({categorias}: {categorias: Array<Categoria>}) {
                                 className={`border-b-2 text-2xl relative z-10 px-8 ${selectedCategoria == categoria.nome? "border-gold-600 text-gold-600" : "border-rangoon-100 text-rangoon-100 hover:text-gold-500 hover:border-gold-500"} py-2`}
                             >
                                 {categoria.nome}
-                            </div>)}
+                            </div>
+                        )}
+                        <div 
+                            //key={`${categoria.nome}${i}`}
+                            onClick={() => setSelectedCategoria("")} 
+                            className={`border-b-2 text-2xl relative z-10 px-8 ${selectedCategoria == "" ? "border-gold-600 text-gold-600" : "border-rangoon-100 text-rangoon-100 hover:text-gold-500 hover:border-gold-500"} py-2`}
+                        >
+                            Tudo
+                        </div>
                     </button>
                 </div>
             </div>
@@ -46,7 +61,7 @@ export default function Catalog({categorias}: {categorias: Array<Categoria>}) {
             <div className="">
                 <div className="grid items-center justify-center relative h-full">
                     <div className="2xl:w-[1440px] py-16 w-full grid xl:grid-cols-2 grid-flow-row gap-y-16 gap-x-4 justify-items-center">
-                        {itens?.data?.map( (item: Produto, i: number) => <CatalogItemCard key={`${item.nome}${i}`} item={item} />)}
+                        {filtered?.map( (item: Produto, i: number) => <CatalogItemCard key={`${item.nome}${i}`} item={item} />)}
                     </div>
                 </div>
                 <AutohideToast />

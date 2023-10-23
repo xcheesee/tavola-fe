@@ -29,10 +29,9 @@ export default function CatalogItemCard({item, checkout=false, qtd}: {item: Prod
                             onClick={() => {
                                 setPedido(prev => ({...prev, [item.id]: {
                                     produto: item,
-                                    qtd: input
+                                    quantidade: input
                                 }}))
                                 setInput(1)
-                                console.log(pedido)
                         }}>
                             Add to Cart
                         </button>
