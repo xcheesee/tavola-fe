@@ -96,10 +96,10 @@ export default function Home() {
 
     <div className='min-h-[80vh] w-full relative'>
         <div className='absolute z-30 w-full h-full'>
-            <img src="/bg-ratings-2.png" alt="" className='w-full h-full lg:object-fit object-cover'/>
+            <img src="/bg-ratings-2.png" alt="" className='w-full h-full lg:object-fit object-fit'/>
         </div>
 
-        <div className='grid h-full w-full content-end pb-16'>
+        <div className='grid h-full w-full content-end pb-24'>
             <Testemonial />
         </div>
     </div>

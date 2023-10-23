@@ -38,5 +38,5 @@ export interface PedidoApiData {
 
 export interface PedidoItem {
     produto: Produto,
-    qtd: number
+    quantidade: number
 }

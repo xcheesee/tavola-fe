@@ -2,14 +2,18 @@
 import { ShowPedidoModal } from "@/components/modals"
 import PedidoTable from "@/components/pedidoTable"
 import { PedidoApiData } from "@/utils/types"
-import { useQuery } from "@tanstack/react-query"
-import { useState } from "react"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { useEffect, useState } from "react"
+import { io } from "socket.io-client"
 
 export default function UserOrders() {
     const modalId = "cliente-pedido-modal"
+    const socket = io("ws://localhost:8000")
+    const queryClient = useQueryClient()
 
     const [pedidoId, setPedidoId] = useState<number|null>(null)
     const [emAndamento, setEmAndamento] = useState<PedidoApiData[]|null>(null)
+    const [signal, setSignal] = useState<boolean>(false)
 
     const pedidos = useQuery({
         queryKey: ['pedidos'],
@@ -23,9 +27,17 @@ export default function UserOrders() {
         onSuccess: (res) => {
             const filtered = res.filter((pedido: PedidoApiData) => pedido.status !== 'Enviado') 
             setEmAndamento(filtered)
-            console.log(filtered)
+            return filtered
         }
     })
+
+    socket.on('alterarStatus', () => {
+        setSignal(prev => !prev)
+    })
+
+    useEffect(() => {
+        queryClient.invalidateQueries(['pedidos'])
+    }, [signal])
 
     function onClickView(arg:number | null) {
         setPedidoId(arg)
@@ -33,10 +45,12 @@ export default function UserOrders() {
         pedidoModal.show()
     } 
     return(
-        <div className="w-full py-8">
+        <div className="w-full py-8 flex justify-center">
             {pedidos.isLoading
                 ?<></>
-                :<PedidoTable pedidos={pedidos?.data} onClickView={onClickView}/>
+                :<div className="w-3/4 ">  
+                    <PedidoTable pedidos={emAndamento} onClickView={onClickView}/>
+                </div>
             }
             <ShowPedidoModal modalId={modalId} pedidoId={pedidoId} />
         </div>

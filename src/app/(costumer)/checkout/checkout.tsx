@@ -45,7 +45,7 @@ export default function Checkout() {
     return (
         <div className="grid lg:grid-cols-[3fr_1fr] mt-16 xl:px-[230px] ">
             <div className="justify-self-center flex flex-col gap-8">
-                {Object.values(pedido)?.map( (item: PedidoItem, i: number) => <CheckoutItemCard item={item.produto} key={`chkout${i}`} qtd={item.qtd}/>)}
+                {Object.values(pedido)?.map( (item: PedidoItem, i: number) => <CheckoutItemCard item={item.produto} key={`chkout${i}`} qtd={item.quantidade}/>)}
             </div>
             <CheckoutCard 
                 onClick={async () => {

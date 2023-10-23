@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import LoadingSkeleton from "../loadingSkeleton"
+import { PedidoItem } from "@/utils/types"
 
 export default function ShowPedidoModal({ modalId, pedidoId }: { modalId: string, pedidoId: number | null }) {
 
@@ -60,6 +61,17 @@ export default function ShowPedidoModal({ modalId, pedidoId }: { modalId: string
                         <div>
                             <p className="py-4">Total</p>
                             <p className="pl-6 pr-4 font-bold">{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(pedido?.data?.total)}</p>
+                        </div>
+                        <div className="col-span-2">
+                            <p className="py-4 font-bold">Itens</p>
+                            <div className="pl-4">
+                                {pedido?.data?.itens?.map( (item: PedidoItem , i: number) => (
+                                    <div className="flex justify-between border-b-2 my-4">
+                                        <div>{item.produto.nome} x {item.quantidade}</div>
+                                        <div>{Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(item.quantidade * item.produto.valor)}</div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <div className="modal-action">

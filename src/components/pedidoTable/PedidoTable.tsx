@@ -2,7 +2,17 @@ import { PedidoApiData, PedidoApiSendable } from "@/utils/types";
 import { Icon } from "@iconify-icon/react";
 import StatusBadge from "../statusBadge/statusBadge";
 
-export default function PedidoTable({ pedidos, onClickView }: { pedidos: PedidoApiData[], onClickView: (arg: number | null) => void }) {
+export default function PedidoTable({ 
+  pedidos, 
+  onClickView, 
+  onClickAtt=()=>{}, 
+  admin=false 
+}: { 
+  pedidos: PedidoApiData[] | null, 
+  onClickView: (arg: number | null) => void, 
+  onClickAtt?: (arg: number | null) => void, 
+  admin?: boolean 
+}) {
     return (
         <div className="overflow-x-auto py-4">
             <table className="table bg-neutral-100 text-neutral-900">
@@ -16,7 +26,7 @@ export default function PedidoTable({ pedidos, onClickView }: { pedidos: PedidoA
                 </tr>
               </thead>
               <tbody>
-                {pedidos.map( pedido => {
+                {pedidos?.map( pedido => {
                     return (<tr key={`pedido${pedido.id}`}>
                       <th>{pedido.id}</th>
                       <td>{new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(pedido.total)}</td>
@@ -31,6 +41,15 @@ export default function PedidoTable({ pedidos, onClickView }: { pedidos: PedidoA
                               <Icon icon="carbon:view-filled" width={24} className='text-neutral-600'/>
                           </button>
                         </div>
+                        {admin && 
+                          <div className='tooltip' data-tip="Atualizar Status">
+                            <button onClick={() => {
+                              onClickAtt(pedido?.id ?? null)
+                            }}>
+                                <Icon icon="material-symbols:cycle" width={24} className='text-neutral-600'/>
+                            </button>
+                          </div>
+                        }
                       </td>
                     </tr>)}
                 )

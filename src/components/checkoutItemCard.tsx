@@ -43,7 +43,7 @@ export default function CheckoutItemCard({item, qtd}: {item: Produto, qtd?: numb
                         setInput(prevInput => {
                             setPedido(prev => ({...prev, [item.id]: {
                                 produto: item,
-                                qtd: prevInput+1
+                                quantidade: prevInput+1
                             }}))    
                             return prevInput+1
                         })
@@ -52,7 +52,7 @@ export default function CheckoutItemCard({item, qtd}: {item: Produto, qtd?: numb
                         if(prevInput <= 1) return prevInput
                             setPedido(prev => ({...prev, [item.id]: {
                                produto: item,
-                               qtd: prevInput-1
+                               quantidade: prevInput-1
                            }}))    
                         return prevInput-1
                     })}

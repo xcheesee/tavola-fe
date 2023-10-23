@@ -10,7 +10,7 @@ export default async function Page() {
     const dehydratedState = dehydrate(queryClient)
 
     return(<div className="relative z-10 min-h-screen bg-rangoon-100">
-            <div className="h-[40vh] w-full relative">
+            <div className="h-[40vh] w-full relative shadow-2xl">
                 <div className="absolute h-full w-full">
                     <img src="/bg-catalog.png" alt="" className="object-fit w-full h-full"/>
                 </div>
