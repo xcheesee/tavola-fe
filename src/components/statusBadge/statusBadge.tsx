@@ -9,6 +9,8 @@ export default function StatusBadge({status}: {status: string}) {
     
     case 'Enviado':
         return <div className="badge badge-success badge-lg">Enviado</div>
+    case 'Finalizado':
+        return <div className="badge badge-neutral badge-lg">Finalizado</div>
     default:
         return <></>
     }

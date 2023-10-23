@@ -41,12 +41,19 @@ export default function PedidoTable({
                               <Icon icon="carbon:view-filled" width={24} className='text-neutral-600'/>
                           </button>
                         </div>
-                        {admin && 
-                          <div className='tooltip' data-tip="Atualizar Status">
+                        {admin 
+                          ?<div className='tooltip' data-tip="Atualizar Status">
                             <button onClick={() => {
                               onClickAtt(pedido?.id ?? null)
                             }}>
                                 <Icon icon="material-symbols:cycle" width={24} className='text-neutral-600'/>
+                            </button>
+                          </div>
+                          :<div className='tooltip' data-tip="Confirmar Recebimento">
+                            <button onClick={() => {
+                              onClickAtt(pedido?.id ?? null)
+                            }}>
+                                <Icon icon="material-symbols:done" width={24} className='text-neutral-600'/>
                             </button>
                           </div>
                         }

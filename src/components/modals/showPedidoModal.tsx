@@ -66,7 +66,7 @@ export default function ShowPedidoModal({ modalId, pedidoId }: { modalId: string
                             <p className="py-4 font-bold">Itens</p>
                             <div className="pl-4">
                                 {pedido?.data?.itens?.map( (item: PedidoItem , i: number) => (
-                                    <div className="flex justify-between border-b-2 my-4">
+                                    <div className="flex justify-between border-b-2 my-4" key={`pedido-item-${i}`}>
                                         <div>{item.produto.nome} x {item.quantidade}</div>
                                         <div>{Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(item.quantidade * item.produto.valor)}</div>
                                     </div>

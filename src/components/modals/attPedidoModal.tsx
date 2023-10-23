@@ -3,14 +3,24 @@ import { useQueryClient } from "@tanstack/react-query"
 import { useSetAtom } from "jotai"
 import { io } from "socket.io-client"
 
-export default function AttPedidoModal({modalId, pedidoId, onClickEnviar}: {modalId: string, pedidoId: number | null, onClickEnviar: (args: any) => {}}) {
+export default function AttPedidoModal({
+  modalId, 
+  pedidoId, 
+  onClickEnviar, 
+  text
+}: {
+  modalId: string, 
+  pedidoId: number | null, 
+  onClickEnviar: (args: any) => {},
+  text?: string
+}) {
     //const queryClient = useQueryClient()
     //const setToast = useSetAtom(toastAtom)
     //const socket = io("ws://localhost:8000")
     return(
         <dialog id={modalId} className="modal">
           <div className="modal-box">
-            <h3 className="font-bold text-lg">Deseja Realmente Atualizar o Status do Pedido #{pedidoId} ?</h3>
+            <h3 className="font-bold text-lg">{!!text ? text : `Deseja Realmente Atualizar o Status do Pedido #{pedidoId} ?`}</h3>
             <div className="modal-action">
               <form method="dialog" className="flex gap-4">
                 {/* if there is a button in form, it will close the modal */}

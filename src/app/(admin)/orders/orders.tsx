@@ -31,6 +31,7 @@ export default function Orders() {
         e.preventDefault()
         const res = await fetch(`/api/pedidos/${pedidoId}`, {
             method: "PATCH",
+            body: JSON.stringify({flag: 'admin'})
         })
         const modal = document.getElementById(attModalId) as HTMLDialogElement
         if(res.ok) {

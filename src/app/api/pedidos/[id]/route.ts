@@ -16,15 +16,10 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 export async function PATCH(request: NextRequest, { params }: { params: { id: string }}) {
     const url = `http://localhost:5034/pedido/${params.id}`
     const status = await request.text()
-    const body = [{
-        op: 'replace',
-        path: '/status',
-        value: status
-    }]
     const res = await fetch(url, {
         method: 'PATCH',
         cache: 'no-store',
-        body: JSON.stringify(body),
+        body: status,
         headers: {
             'Content-Type': "application/json"
         }

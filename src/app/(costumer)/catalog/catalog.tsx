@@ -2,7 +2,6 @@
 import AutohideToast from "@/components/autohideToast";
 import CatalogItemCard from "@/components/catalogItemCard";
 import Header from "@/components/header";
-import { getAllCategorias } from "@/utils/api/categorias";
 import { getAllProdutos } from "@/utils/api/produtos";
 import { Categoria, Produto } from "@/utils/types";
 import { useQuery } from "@tanstack/react-query";
@@ -17,7 +16,7 @@ export default function Catalog({categorias}: {categorias: Array<Categoria>}) {
         queryFn: () => getAllProdutos({categoria: selectedCategoria})
     })
 
-    const filtered = itens?.data?.filter( item => {
+    const filtered = itens?.data?.filter( (item: Produto) => {
         if(selectedCategoria === "") {
             return true
         }
