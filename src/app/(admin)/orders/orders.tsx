@@ -68,6 +68,9 @@ export default function Orders() {
     socket.on('cozinhaPedido', () => {
         setSignal(prev => !prev)
     })
+    socket.on('confStatus', () => {
+        setSignal(prev => !prev)
+    })
 
     return (
         <div className="grid px-2">

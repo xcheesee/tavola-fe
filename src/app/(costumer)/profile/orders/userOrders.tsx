@@ -66,7 +66,7 @@ export default function UserOrders() {
         if(res.ok) {
             setToast(prev => ({...prev, open: true, message: "Status Atualizado."}))
             queryClient.invalidateQueries()
-            socket.emit('cozinhaStatus')
+            socket.emit('recebimentoConfirmado')
             modal.close()
         }
     }
