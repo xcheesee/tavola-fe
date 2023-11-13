@@ -1,6 +1,9 @@
-export default function Metrics() {
+import Metrics from "./metrics";
+
+export default function Page() {
     return (
-        <div className="w-full flex flex-col items-center px-4 py-8">
+        <div className="w-full px-8 py-4">
+            <Metrics />
         </div>
     )
 }

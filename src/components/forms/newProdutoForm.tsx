@@ -71,6 +71,13 @@ export default function NewProdutoForm({ title=""}: { title: string }) {
                     name='descricao'
                 />
 
+                <input 
+                    type="text" 
+                    placeholder="Quantidade" 
+                    className="input input-bordered w-full" 
+                    name='quantidade'
+                />
+
                 <div className="join w-full">
                     <div className="join-item flex items-center bg-slate-300 px-4 font-bold">R$</div>
                     <input 

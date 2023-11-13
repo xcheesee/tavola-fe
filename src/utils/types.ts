@@ -16,6 +16,7 @@ export interface Produto {
     descricao: string;
     valor: number;
     categoria: Categoria;
+    quantidade?: number
 }
 
 export interface Pedido {
@@ -37,6 +38,11 @@ export interface PedidoApiData {
 }
 
 export interface PedidoItem {
-    produto: Produto,
-    quantidade: number
+    produto: Produto;
+    quantidade: number;
+}
+
+export interface EstoqueItem {
+    produto: string;
+    quantidade: number;
 }

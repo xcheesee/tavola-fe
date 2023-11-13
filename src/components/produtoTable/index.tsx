@@ -28,6 +28,7 @@ export default function ProdutoTable({
                   <th>Nome</th>
                   <th>Descricao</th>
                   <th>Valor</th>
+                  <th>Quantidade</th>
                   <th>Categoria</th>
                   <th>Acao</th>
                 </tr>
@@ -38,6 +39,7 @@ export default function ProdutoTable({
                     <td>{produto.nome}</td>
                     <td>{produto.descricao}</td>
                     <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(produto.valor)}</td>
+                    <td><span className="font-bold">{produto.quantidade}</span> Un</td>
                     <td>{produto.categoria.nome}</td>
                     <td className='flex gap-4'>
                       <div className='tooltip' data-tip="Editar">
