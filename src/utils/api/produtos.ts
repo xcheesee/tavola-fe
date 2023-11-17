@@ -51,3 +51,21 @@ export async function deleteProduto({id}: {id: string}) {
     })
     return res
 }
+
+export async function getReceitaTotais() {
+    const url = "http://localhost:5034/produto/valor_total_vendido"
+    const res = await fetch(url, {
+        method: 'GET',
+        cache: 'no-store'
+    })
+    return await res.json()
+}
+
+export async function getVendasTotais() {
+    const url = "http://localhost:5034/produto/vendas_por_produto"
+    const res = await fetch(url, {
+        method: 'GET',
+        cache: 'no-store'
+    })
+    return await res.json()
+}
