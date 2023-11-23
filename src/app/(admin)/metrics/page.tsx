@@ -1,6 +1,6 @@
 import getQueryClient from "@/app/getQueryClient";
 import Metrics from "./metrics";
-import { getReceitaTotais, getVendasTotais } from "@/utils/api/produtos";
+import { getCategoriaTotais, getCategoriaVendas, getReceitaTotais, getVendasTotais } from "@/utils/api/produtos";
 import { Hydrate, dehydrate } from "@tanstack/react-query";
 
 export default async function Page() {
@@ -13,6 +13,14 @@ export default async function Page() {
         queryClient.prefetchQuery({
             queryKey: ['vendidoTotais'],
             queryFn: () => getVendasTotais()
+        }),
+        queryClient.prefetchQuery({
+            queryKey: ['categoriaTotais'],
+            queryFn: () => getCategoriaTotais()
+        }),
+        queryClient.prefetchQuery({
+            queryKey: ['categoriaVendas'],
+            queryFn: () => getCategoriaVendas()
         })
     ])
     const dehydratedState = dehydrate(queryClient)

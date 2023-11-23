@@ -3,12 +3,13 @@
 import DynamicCounter from '@/components/dynamicCounter'
 import Header from '@/components/header'
 import { Icon } from '@iconify-icon/react/dist/iconify.js'
-import '@splidejs/react-splide/css'
 import { Eagle_Lake as Almendra } from 'next/font/google'
 import { useEffect, useState } from 'react'
 import { useRouter, redirect } from 'next/navigation'
 import Testemonial from '@/components/testemonial'
 import Footer from '@/components/footer'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
 export const almendra = Almendra({ 
     subsets: ['latin'],
@@ -21,6 +22,23 @@ export default function Home() {
     useEffect(() => {
         //redirect('/dashboard')
     },[])
+    const responsive = {
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 1,
+          paritialVisibilityGutter: 10
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2,
+          paritialVisibilityGutter: 50
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1,
+          paritialVisibilityGutter: 30
+        }
+      };
 
   return (
     <>
@@ -94,13 +112,45 @@ export default function Home() {
 
     </div>
 
-    <div className='min-h-[80vh] w-full relative'>
+    <div className='min-h-[80vh] w-full relative grid items-end'>
         <div className='absolute z-30 w-full h-full'>
             <img src="/bg-ratings-2.png" alt="" className='w-full h-full lg:object-fit object-fit'/>
         </div>
+        <div className='w-screen pb-28'>
+            <Carousel
+                infinite
+                autoPlay
+                deviceType='desktop'
+                autoPlaySpeed={5000}
+                responsive={responsive}
+                arrows
+                className='z-40 relative'
+            >
+                    <Testemonial
+                        pfp='/pfp1.png'
+                        title="Ragnar Lodbrok"
+                        subtitle="Viking"
+                    >
+                        छपाई और अक्षर योजन उद्योग का एक साधारण डमी पाठ है. सन १५०० के बाद से अभी तक इस उद्योग का मानक डमी पाठ मन गया, जब एक अज्ञात मुद्रक ने नमूना लेकर एक नमूना किताब बनाई. यह न केवल पाँच सदियों से जीवित रहा बल्कि इसने इलेक्ट्रॉनिक मीडिया में छलांग लगाने के बाद भी मूलतः अपरिवर्तित रहा. यह के दशक में अंश युक्त पत्र के रिलीज के साथ लोकप्रिय हुआ, और हाल ही में के संस्करणों सहित तरह डेस्कटॉप प्रकाशन सॉफ्टवेयर के साथ अधिक प्रचलित हुआ.
+                    </Testemonial>
+                    <Testemonial
 
-        <div className='grid h-full w-full content-end pb-24'>
-            <Testemonial />
+                        pfp='/pfp2.jpeg'
+                        title="Lagertha"
+                        subtitle="Cuié"
+                    >
+                        Лорем ипсум долор сит амет, еос долор видерер инцидеринт цу, ид сеа нибх оратио аццоммодаре. Доценди евертитур ассентиор ест ат, сеа те аперири модератиус, еа модо инсоленс адолесценс нам.
+                    </Testemonial>
+                    <Testemonial
+
+                        pfp='/pfp3.jpg'
+                        title="Karl Marx"
+                        subtitle="Rei do Sexo"
+                    >
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                    </Testemonial>
+            </Carousel>
+
         </div>
     </div>
 

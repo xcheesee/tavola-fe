@@ -69,3 +69,21 @@ export async function getVendasTotais() {
     })
     return await res.json()
 }
+
+export async function getCategoriaTotais() {
+    const url = "http://localhost:5034/produto/valor_total_por_categoria"
+    const res = await fetch(url, {
+        method: 'GET',
+        cache: 'no-store'
+    })
+    return await res.json()
+}
+
+export async function getCategoriaVendas() {
+    const url = "http://localhost:5034/produto/pedidos_por_categoria"
+    const res = await fetch(url, {
+        method: 'GET',
+        cache: 'no-store'
+    })
+    return await res.json()
+}
